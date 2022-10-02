@@ -15,6 +15,8 @@ public class SpacesBlockingAssignment extends AbstractLineDecoration {
             return line;
         }
         if (line.matches(".*[^<]=.*")) {
+            // (?<!a)b matches a “b” that is not preceded by an “a”
+            // b(?!a) matches a “b” that is not followed by an “a”
             String aux = line.replaceAll("[ ]*(?<![=!<>&|~^+\\-*/])=", StringHelper.getSpaces(format.getSpacesBlockingAssignment()) + "=").replaceAll("=(?![=])[ ]*", "=" + StringHelper.getSpaces(format.getSpacesBlockingAssignment()));
             return aux;
         }
